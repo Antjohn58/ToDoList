@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoList.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="ForestGreen" Padding="24" CornerRadius="0">
+            <Label Text="To Do List" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Frame BackgroundColor="White" BorderColor="Gray" CornerRadius="5" Padding="5" Margin="10">
+            <ListView x:Name="toDoList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox IsChecked="{Binding IsCompleted}" Grid.Column="0" VerticalOptions="CenterAndExpand" />
+                                <Label Text="{Binding Item}" FontSize="Medium" Grid.Column="1" VerticalOptions="CenterAndExpand" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+        <Entry x:Name="input" Placeholder="Enter Here..." />
+        <Button x:Name="btnSubmit"  Text="Submit" Clicked="OnSubmitClicked"/>
+    </StackLayout>
+
+</ContentPage>
