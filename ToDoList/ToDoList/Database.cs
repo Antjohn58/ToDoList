@@ -18,13 +18,16 @@ namespace ToDoList
         {
             return _connection.Table<List>().ToListAsync();
         }
-        public Task<int> SaveStudentAsync(List list)
+        public Task<int> SaveListAsync(List list)
         {
-            return _connection.InsertAsync(list);
-        }
-        public Task<int> DeleteListAsync(List list)
-        {
-            return _connection.DeleteAsync(list);
+            if (list.Id != 0)
+            {
+                return _connection.UpdateAsync(list); 
+            }
+            else
+            {
+                return _connection.InsertAsync(list); 
+            }
         }
     }
 }
